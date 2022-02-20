@@ -7,7 +7,11 @@ Game::Game():
 		sf::Style::Titlebar | sf::Style::Close)
 {
 	window.setVerticalSyncEnabled(true);
-	//window.setFramerateLimit(FPS);
+	for (size_t i = 0; i < METEORS_QTY; i++) {
+		Meteor* meteor = new Meteor();
+		meteors.push_back(meteor);
+	}
+
 }
 void Game::play() {
 	while (window.isOpen()) {
@@ -24,9 +28,15 @@ void Game::check_events() {
 }
 void Game::update(){
 	player.update();
+	for (size_t i = 0; i < METEORS_QTY; i++) {
+		meteors[i]->update();
+	}
 }
 void Game::draw() {
 	window.clear(sf::Color::Black);
 	player.draw(window);
+	for (size_t i = 0; i < METEORS_QTY; i++) {
+		meteors[i]->draw(window);
+	}
 	window.display();
 }

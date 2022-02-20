@@ -9,4 +9,5 @@ const std::string IMAGES_FOLDER = "images/";
 const std::string PLAYER_FILE_NAME = "playerShip2_green.png";
 const float PLAYER_OFFSET_Y = 10;
 const float PLAYER_SPEED_X = 5.5f;
-
+const size_t METEOR_TYPE_QTY = 8;
+const size_t METEORS_QTY = 20;

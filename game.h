@@ -1,6 +1,8 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "player.h"
+#include "meteor.h"
+#include <vector>
 
 class Game {
 public:
@@ -10,7 +12,7 @@ public:
 private:
 	sf::RenderWindow window;
 	Player player;
-
+	std::vector<Meteor*> meteors;
 	void check_events();
 	void update();
 	void draw();
