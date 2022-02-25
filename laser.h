@@ -6,7 +6,9 @@ private:
 	sf::Texture texture;
 	sf::Sprite sprite;
 public:
-	Laser();
+	Laser(float x , float y);
 	void update();
-	void draw();
+	void draw(sf::RenderWindow& );
+	sf::FloatRect getHitBox();
+	sf::Vector2f getPosition();
 };

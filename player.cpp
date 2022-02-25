@@ -19,3 +19,5 @@ void Player::update(){
 		sprite.move(PLAYER_SPEED_X, 0.f);
 }
 void Player::draw(sf::RenderWindow& window) { window.draw(sprite); }
+sf::FloatRect Player::getHitBox() { return sprite.getGlobalBounds(); }
+sf::Vector2f Player::getPosition() { return sprite.getPosition(); }

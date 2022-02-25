@@ -11,3 +11,5 @@ const float PLAYER_OFFSET_Y = 10;
 const float PLAYER_SPEED_X = 5.5f;
 const size_t METEOR_TYPE_QTY = 8;
 const size_t METEORS_QTY = 20;
+const std::string BIG_LASER_FILE_NAME = "laserGreen04.png";
+const float LASER_SPEED = 10.f;

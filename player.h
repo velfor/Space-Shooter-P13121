@@ -9,4 +9,6 @@ public:
 	Player();
 	void update();
 	void draw(sf::RenderWindow& window);
+	sf::FloatRect getHitBox();
+	sf::Vector2f getPosition();
 };
