@@ -1,23 +1,31 @@
+#include "const.h"
 #include "player.h"
-#include "settings.h"
 
-Player::Player() {
-	texture.loadFromFile(IMAGES_FOLDER + PLAYER_FILE_NAME);
+Player::Player(float x, float y, std::string texture_file_name){
+	texture.loadFromFile(texture_file_name);
 	sprite.setTexture(texture);
-	sf::FloatRect g_bounds = sprite.getGlobalBounds();
-	sprite.setPosition(WINDOW_WIDTH / 2 - g_bounds.width / 2,
-		WINDOW_HEIGHT - g_bounds.height - PLAYER_OFFSET_Y);
+	sprite.setPosition(x, y);
 }
-void Player::update(){
-	 sf::Vector2f position = sprite.getPosition();
-	 sf::FloatRect g_bounds = sprite.getGlobalBounds();
+void Player::draw(sf::RenderWindow& window) {
+	window.draw(sprite);
+}
+void Player::update() {
+	float speedx = PLAYER_SPEEDX;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && 
-		position.x > 0)
-		sprite.move(-PLAYER_SPEED_X, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) &&
-		position.x < WINDOW_WIDTH - g_bounds.width)
-		sprite.move(PLAYER_SPEED_X, 0.f);
+		sprite.getPosition().x > 0
+		)
+	{
+		sprite.move(-speedx, 0);
+	}
+	else 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) &&
+			sprite.getPosition().x < WINDOW_WIDTH - getWidth()
+			)
+		{
+			sprite.move(speedx, 0);
+		}
 }
-void Player::draw(sf::RenderWindow& window) { window.draw(sprite); }
+size_t Player::getWidth() { return sprite.getLocalBounds().width; }
+size_t Player::getHeight() { return sprite.getLocalBounds().height; }
 sf::FloatRect Player::getHitBox() { return sprite.getGlobalBounds(); }
 sf::Vector2f Player::getPosition() { return sprite.getPosition(); }

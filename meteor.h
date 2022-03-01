@@ -3,13 +3,16 @@
 
 class Meteor {
 private:
-	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Texture texture;
+	float speedx;
+	float speedy;
 	static std::string meteor_file_names[];
-	float speedx, speedy;
-	void spawn();
 public:
 	Meteor();
+	void draw(sf::RenderWindow& window);
 	void update();
-	void draw(sf::RenderWindow& );
+	size_t getWidth();
+	size_t getHeight();
+	sf::FloatRect getHitBox();
 };

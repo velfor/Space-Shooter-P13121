@@ -3,12 +3,15 @@
 
 class Player {
 private:
-	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Texture texture;
 public:
-	Player();
-	void update();
+	Player(float x, float y, std::string texture_file_name);
 	void draw(sf::RenderWindow& window);
+	void update();
+	size_t getWidth();
+	size_t getHeight();
 	sf::FloatRect getHitBox();
 	sf::Vector2f getPosition();
 };
+

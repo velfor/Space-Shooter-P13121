@@ -3,12 +3,14 @@
 
 class Laser {
 private:
-	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Texture texture;
 public:
-	Laser(float x , float y);
+	Laser(float, float);
+	void draw(sf::RenderWindow& window);
 	void update();
-	void draw(sf::RenderWindow& );
+	size_t getWidth();
+	size_t getHeight();
 	sf::FloatRect getHitBox();
 	sf::Vector2f getPosition();
 };
