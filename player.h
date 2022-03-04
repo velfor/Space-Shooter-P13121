@@ -1,17 +1,18 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "settings.h"
 
 class Player {
 private:
-	sf::Sprite sprite;
 	sf::Texture texture;
+	sf::Sprite sprite;
+	int hp = PLAYER_HP;
 public:
-	Player(float x, float y, std::string texture_file_name);
-	void draw(sf::RenderWindow& window);
+	Player();
 	void update();
-	size_t getWidth();
-	size_t getHeight();
+	void draw(sf::RenderWindow& window);
 	sf::FloatRect getHitBox();
 	sf::Vector2f getPosition();
+	void decreaseHp(size_t);
+	int getHp();
 };
-
