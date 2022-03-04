@@ -15,3 +15,4 @@ const std::string BIG_LASER_FILE_NAME = "laserGreen04.png";
 const float LASER_SPEED = 10.f;
 const int PLAYER_HP = 100;
 const std::string GAME_OVER_FILE_NAME = "game_over.jpg";
+const size_t BONUS_TYPES_QTY = 4;

@@ -22,4 +22,5 @@ void Player::draw(sf::RenderWindow& window) { window.draw(sprite); }
 sf::FloatRect Player::getHitBox() { return sprite.getGlobalBounds(); }
 sf::Vector2f Player::getPosition() { return sprite.getPosition(); }
 void Player::decreaseHp(size_t dmg) { hp -= dmg; }
+void Player::increaseHp(size_t add_hp) { hp += add_hp; }
 int Player::getHp() { return hp; }

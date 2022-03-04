@@ -14,5 +14,6 @@ public:
 	sf::FloatRect getHitBox();
 	sf::Vector2f getPosition();
 	void decreaseHp(size_t);
+	void increaseHp(size_t);
 	int getHp();
 };

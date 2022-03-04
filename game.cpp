@@ -55,6 +55,9 @@ void Game::update(){
 		lasers.remove_if([](Laser* laser) {return laser->getPosition().y < -50; });
 		player_hp.update(std::to_string(player.getHp()));
 		if (player.getHp() <= 0) game_state = GAME_OVER;
+		for (auto iter = bonuses.begin(); iter != bonuses.end(); iter++) {
+			(*iter)->update();
+		}
 		break;
 	case GAME_OVER:
 		break;
@@ -76,6 +79,9 @@ void Game::draw() {
 			(*iter)->draw(window);
 		}
 		window.draw(player_hp.getText());
+		for (auto iter = bonuses.begin(); iter != bonuses.end(); iter++) {
+			(*iter)->draw(window);
+		}
 		break;
 	case GAME_OVER:
 		window.draw(game_over_screen.getSprite());
@@ -93,4 +99,35 @@ void Game::check_collisions() {
 				(*iter)->getHitBox().width/3));
 		}
 	}
+	//пули попали в метеоры
+	for (auto it_l = lasers.begin(); it_l != lasers.end(); it_l++) {
+		for (auto it_m = meteors.begin(); it_m != meteors.end(); it_m++) {
+			if ((*it_l)->getHitBox().intersects((*it_m)->getHitBox())){
+				(*it_m)->spawn();
+				(*it_l)->setDel(true);
+				//с 10% шансом из метеора выпадает бонус
+				size_t chance = rand() % 1000;
+				if (chance < 100) {
+					Bonus* new_bonus = new Bonus((*it_m)->getPosition());
+					bonuses.push_back(new_bonus);
+				}
+			}
+		}
+	}
+	//удаляем помеченные пули
+	lasers.remove_if([](Laser* laser) {return laser->getDel(); });
+	//бонус попал в корабль
+	for (auto iter = bonuses.begin(); iter != bonuses.end(); iter++) {
+		if (player.getHitBox().intersects((*iter)->getHitBox())) {
+			(*iter)->setDel(true);
+			switch ((*iter)->getType()) {
+			case Bonus::BonusType::PILL:
+				player.increaseHp(25);
+				break;
+			}
+		}
+	}
+	//удаляем помеченные бонусы
+	bonuses.remove_if([](Bonus* bonus) {return bonus->getDel(); });
+
 }

@@ -7,6 +7,7 @@
 #include <list>
 #include "text.h"
 #include "splash.h"
+#include "bonus.h"
 
 class Game {
 public:
@@ -21,6 +22,7 @@ private:
 	std::list<Laser*> lasers;
 	TextObject player_hp;
 	SplashScreen game_over_screen;
+	std::list<Bonus*> bonuses;
 
 	void check_events();
 	void update();

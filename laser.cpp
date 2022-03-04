@@ -13,3 +13,5 @@ void Laser::update() {
 void Laser::draw(sf::RenderWindow& window) { window.draw(sprite); }
 sf::FloatRect Laser::getHitBox() { return sprite.getGlobalBounds(); }
 sf::Vector2f Laser::getPosition() { return sprite.getPosition(); }
+void Laser::setDel(bool a) { del = a; }
+bool Laser::getDel() { return del; }
