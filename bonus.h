@@ -3,7 +3,7 @@
 
 class Bonus {
 public:
-	enum BonusType {BOLT, PILL, SHIELD, STAR};
+	enum class BonusType {BOLT, PILL, SHIELD, STAR};
 	Bonus(sf::Vector2f pos);
 	void update();
 	void draw(sf::RenderWindow&);

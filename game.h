@@ -8,6 +8,7 @@
 #include "text.h"
 #include "splash.h"
 #include "bonus.h"
+#include "explosion.h"
 
 class Game {
 public:
@@ -21,8 +22,13 @@ private:
 	std::vector<Meteor*> meteors;
 	std::list<Laser*> lasers;
 	TextObject player_hp;
+	TextObject score_text;
 	SplashScreen game_over_screen;
 	std::list<Bonus*> bonuses;
+	size_t score = 0;
+	sf::Clock clock;
+	size_t fire_delay = 200;
+	std::list<Explosion*> explosions;
 
 	void check_events();
 	void update();
